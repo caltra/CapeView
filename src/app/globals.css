@@ -1,26 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* DEFAULTS */
+    box-sizing: border-box;
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary-txt);
+    font-family: 'Mojangles';
+    /* letter-spacing: 1px; */
+    word-spacing: 6px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+    --color-primary-bg: #000000;
+    --color-secondary-bg: #404040;
+
+    --color-primary-txt: #e1e1e1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+    font-family: 'Mojangles';
+    src: url(../../public/fonts/Mojang-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
