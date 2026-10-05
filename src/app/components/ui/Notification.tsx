@@ -4,7 +4,8 @@ export default function Notification({ status }: { status: string }) {
 
 
     return (
-        <div className="flex items-center mr-2 animate-fade-text">
+        // animate-fade-text
+        <div className="flex items-center mr-2">
             {status}
         </div>
     )
