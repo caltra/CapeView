@@ -17,6 +17,15 @@
     --color-primary-txt: #e1e1e1;
 }
 
+@theme {
+    --animate-fade-text: fade-out 3s ease-in-out 5s forwards;
+
+    @keyframes fade-out {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+}
+
 @font-face {
     font-family: 'Mojangles';
     src: url(../../public/fonts/Mojang-Regular.ttf) format('truetype');
