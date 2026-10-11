@@ -2,9 +2,7 @@
 
 import { ExternalProfile, ExternalUser, InternalProfile } from "@/types/userTypes";
 import { useState } from "react";
-import Notification from "./Notification";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { setNotification } from "@/lib/features/notifications/notificationSlice";
 
 
 export default function Header() {
@@ -12,8 +10,8 @@ export default function Header() {
     const [input, setInput] = useState<string>("");
     const [currentProfile, setCurrentProfile] = useState<InternalProfile | undefined>(undefined);
 
-    const notificationState = useAppSelector((state) => state.notification.value);
-    const dispatch = useAppDispatch();
+    // const notificationState = useAppSelector((state) => state.notification.value);
+    // const dispatch = useAppDispatch();
 
     async function findProfile() {
         if (input) {
@@ -66,8 +64,6 @@ export default function Header() {
             {renderHeadImg()}
 
             <div className="flex">
-                <Notification status={notificationState} />
-
                 <input
                     className="rounded-lg bg-secondary-bg px-2 mr-2"
                     placeholder="User to add"
