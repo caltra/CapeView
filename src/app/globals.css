@@ -39,3 +39,42 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.cape-crop {
+    width: 100px;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cape-crop img {
+    position: absolute;
+    width: 640px;
+    height: 320px;
+    max-width: none;
+    left: -10px;
+    top: -10px;
+    image-rendering: pixelated;
+}
+
+.head-crop {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.head-crop img {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    max-width: none;
+    left: -80px;
+    top: -80px;
+    image-rendering: pixelated;
+}
+
+.head-img {
+    width: 128px;
+    height: 128px;
+}

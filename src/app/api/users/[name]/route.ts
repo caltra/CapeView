@@ -10,6 +10,7 @@ type RouteParams = {
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
     const { name } = await params;
+    
     if (!name) {
         return NextResponse.json({ error: "Missing user name" }, { status: 400 });
     }
@@ -18,6 +19,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
         const profile = await findProfile(name);
         return NextResponse.json(profile);
     } catch (error) {
+        console.error("findProfile route failed:", error)
         return NextResponse.json(
             { error: "Failed to fetch profile" },
             { status: 500 }
