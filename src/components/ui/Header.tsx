@@ -11,18 +11,27 @@ export default function Header() {
     const [currentProfile, setCurrentProfile] = useState<InternalProfile | undefined>(undefined);
 
     // const notificationState = useAppSelector((state) => state.notification.value);
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     async function findProfile() {
-        if (input) {
+        const usernameRegex = /^[a-zA-Z0-9_]+$/;
+
+        if (input && usernameRegex.test(input) && input.length <= 16) {
             try {
                 const response = await fetch(`/api/users/${input}`);
-                if (!response.ok) throw new Error(`Client failed to fetch profile with status: ${response.status}`);
+                
+                if (response.status == 200) {
+                    const profile: InternalProfile = await response.json();
+    
+                    console.log(profile);
+                    setCurrentProfile(profile);
+                } else if (response.status == 204) {
+                    console.log(`User: [ ${input} ] does not exist`);
+                } else {
+                    console.error(`Header.tsx/findProfile() recieved an unexpected response status of: [ ${response.status} ]`);
+                }
 
-                const profile: InternalProfile = await response.json();
-
-                console.log(profile);
-                setCurrentProfile(profile);
+                setInput("");
             } catch (error) {
                 if (error instanceof Error) throw error;
                 else throw new Error(String(error));

@@ -11,7 +11,10 @@ export async function findProfile(input: string): Promise<InternalProfile | unde
 
     try {
         const uuidResponse = await fetch(`${uuidApi}/${input}`);
-        if (!uuidResponse.ok) throw new Error(`UUID API response failed in findProfile() with status: ${uuidResponse.status}`)
+        if (!uuidResponse.ok) {
+            console.error(`UUID API response failed in findProfile() with status: ${uuidResponse.status}`);
+            return undefined;
+        } 
         
         const uuidData: ExternalUser = await uuidResponse.json();
         
@@ -19,7 +22,11 @@ export async function findProfile(input: string): Promise<InternalProfile | unde
         if (uuidData.id) {
             try {
                 const profileResponse = await fetch(`${profileApi}/${uuidData.id}`);
-                if (!profileResponse.ok) throw new Error(`Profile API response failed in findProfile() with status: ${profileResponse.status}`);
+                if (!profileResponse.ok) {
+                    console.error(`Profile API response failed in findProfile() with status: ${profileResponse.status}`);
+                    return undefined;
+                }
+                    
     
                 const profileData: ExternalProfile = await profileResponse.json();
 

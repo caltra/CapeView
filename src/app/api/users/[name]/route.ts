@@ -10,14 +10,17 @@ type RouteParams = {
 
 export async function GET(request: NextRequest, { params }: RouteParams) {
     const { name } = await params;
-    
+
     if (!name) {
         return NextResponse.json({ error: "Missing user name" }, { status: 400 });
     }
 
     try {
         const profile = await findProfile(name);
-        return NextResponse.json(profile);
+
+        if (profile) return NextResponse.json(profile);
+
+        else return new NextResponse(null, { status: 204 })
     } catch (error) {
         console.error("findProfile route failed:", error)
         return NextResponse.json(
