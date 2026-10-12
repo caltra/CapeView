@@ -1,7 +1,7 @@
-"use server";
+"use client";
 
 
-export default async function Footer() {
+export default function Footer() {
 
 
     return (
