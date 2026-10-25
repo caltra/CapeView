@@ -1,0 +1,2 @@
+# CapeView
+Web-based application created to view user's Minecraft capes. Database persistently store's cape information based on a player's active cape. Built with Next.js, Tailwind CSS, Spring Boot and PostgreSQL.
