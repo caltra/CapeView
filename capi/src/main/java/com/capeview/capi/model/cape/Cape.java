@@ -1,5 +1,7 @@
 package com.capeview.capi.model.cape;
 
+import java.time.LocalDate;
+
 import com.capeview.capi.enums.cape.Rarity;
 
 import jakarta.persistence.Column;
@@ -24,7 +26,7 @@ public class Cape {
     private String textureHash;
 
     @Column(name = "release_date")
-    private String releaseDate;
+    private LocalDate releaseDate;
 
     @Column(name = "owners")
     private Long owners;
@@ -37,7 +39,7 @@ public class Cape {
     protected Cape() {
     }
 
-    public Cape(String name, String textureHash, String releaseDate, Long owners, Rarity rarity) {
+    public Cape(String name, String textureHash, LocalDate releaseDate, Long owners, Rarity rarity) {
         this.name = name;
         this.textureHash = textureHash;
         this.releaseDate = releaseDate;
@@ -58,7 +60,7 @@ public class Cape {
         return textureHash;
     }
 
-    public String getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
@@ -79,7 +81,7 @@ public class Cape {
         this.textureHash = textureHash;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
