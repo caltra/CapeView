@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Header />
 
-        <main className="w-2/3 mx-auto">
+        <main className="grow w-2/3 mx-auto">
           {children}
         </main>
       </body>
