@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import Header from "@/components/ui/Header";
 import { NotificationProvider } from "@/context/NotificationContext";
+import Notification from "@/components/ui/Notification";
 
 
 export const metadata: Metadata = {
@@ -16,13 +17,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col">
-        <Header />
+        <NotificationProvider>
+          <Notification />
 
-        <main className="grow w-2/3 mx-auto">
-          <NotificationProvider>
+          <Header />
+
+          <main className="grow w-2/3 mx-auto">
             {children}
-          </NotificationProvider>
-        </main>
+          </main>
+        </NotificationProvider>
       </body>
     </html>
   );

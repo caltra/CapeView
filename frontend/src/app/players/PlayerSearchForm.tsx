@@ -61,8 +61,6 @@ export default function PlayerSearchForm() {
             >
                 {isPending ? "..." : "FIND"}
             </button>
-
-            <Notification />
         </form>
     )
 }
