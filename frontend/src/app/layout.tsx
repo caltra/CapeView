@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import Header from "@/components/ui/Header";
+import { NotificationProvider } from "@/context/NotificationContext";
 
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
 
         <main className="grow w-2/3 mx-auto">
-          {children}
+          <NotificationProvider>
+            {children}
+          </NotificationProvider>
         </main>
       </body>
     </html>

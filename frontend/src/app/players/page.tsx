@@ -1,3 +1,4 @@
+import PlayerSearchForm from "./PlayerSearchForm";
 
 
 export default function Players() {
@@ -15,22 +16,7 @@ export default function Players() {
                 </p>
             </div>
 
-            <form className="flex flex-col items-center">
-                <div>
-                    <label htmlFor="username" className="hidden">Username</label>
-                    <input type="text" id="username" name="username" required
-                        placeholder="username"
-                        className="w-fit text-xl text-center bg-foreground/40 rounded-2xl tracking-wider py-2 shadow-lg shadow-highlight mb-8 cursor-pointer caret-transparent"
-                    />
-                </div>
-
-                <button type="submit"
-                    className="w-fit text-xl border border-foreground border-b-highlight bg-background px-8 tracking-wider text-text/60 rounded-2xl 
-                     hover:border-highlight transition-all"
-                >
-                    FIND
-                </button>
-            </form>
+            <PlayerSearchForm />
         </div>
     )
 }
