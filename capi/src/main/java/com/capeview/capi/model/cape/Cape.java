@@ -1,6 +1,6 @@
 package com.capeview.capi.model.cape;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 import com.capeview.capi.enums.cape.Rarity;
 
@@ -8,28 +8,22 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity 
 public class Cape {
     // Shape
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String hash;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "texture_hash")
-    private String textureHash;
+    @Column(name = "wearers")
+    private Long wearers;
 
-    @Column(name = "release_date")
-    private LocalDate releaseDate;
-
-    @Column(name = "owners")
-    private Long owners;
+    @Column(name = "first_seen")
+    private Instant firstSeen;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "rarity")
@@ -39,33 +33,29 @@ public class Cape {
     protected Cape() {
     }
 
-    public Cape(String name, String textureHash, LocalDate releaseDate, Long owners, Rarity rarity) {
+    public Cape(String hash, String name, Long wearers, Instant firstSeen, Rarity rarity) {
+        this.hash = hash;
         this.name = name;
-        this.textureHash = textureHash;
-        this.releaseDate = releaseDate;
-        this.owners = owners;
+        this.wearers = wearers;
+        this.firstSeen = firstSeen;
         this.rarity = rarity;
     }
 
     // Getters
-    public Long getId() {
-        return id;
+    public String getHash() {
+        return hash;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getTextureHash() {
-        return textureHash;
+    public Long getWearers() {
+        return wearers;
     }
 
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public Long getOwners() {
-        return owners;
+    public Instant getFirstSeen() {
+        return firstSeen;
     }
 
     public Rarity getRarity() {
@@ -73,20 +63,20 @@ public class Cape {
     }
 
     // Setters
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setTextureHash(String textureHash) {
-        this.textureHash = textureHash;
+    public void setWearers(Long wearers) {
+        this.wearers = wearers;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public void setOwners(Long owners) {
-        this.owners = owners;
+    public void setFirstSeen(Instant firstSeen) {
+        this.firstSeen = firstSeen;
     }
 
     public void setRarity(Rarity rarity) {
