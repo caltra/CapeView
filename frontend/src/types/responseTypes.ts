@@ -22,14 +22,25 @@ export interface ProfileProperties {
     profileId: string;
     profileName: string;
     textures: {
-        SKIN: {
-            url: string;
-            metadata: {
-                model: string;
+        SKIN?: {
+            url?: string;
+            metadata?: {
+                model?: string;
             };
         };
-        CAPE: {
-            url: string;
+        CAPE?: {
+            url?: string;
         };
     };
+}
+
+export interface CapeProperties {
+    texture_key: string;
+    source: string;
+    name: string;
+    url: string;
+    wearers: number;
+    first_seen: Date;
+    first_worn: Date;
+    last_worn: Date;
 }

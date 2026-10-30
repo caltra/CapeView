@@ -21,7 +21,7 @@ export default function PlayerSearchForm() {
         if (state.error) {
             setNotification({ type: "ERROR", message: state.error });
         } else if (state.result) {
-            setNotification({ type: "SUCCESS", message: "Player found successfully!" });
+            setNotification({ type: "SUCCESS", message: `Current cape: ${state.result}` });
         }
     }, [state]);
 
