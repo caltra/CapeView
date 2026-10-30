@@ -13,7 +13,8 @@ import jakarta.persistence.Id;
 @Entity 
 public class Cape {
     // Shape
-    @Id 
+    @Id
+    @Column(name = "cape_hash")
     private String hash;
 
     @Column(name = "name")
