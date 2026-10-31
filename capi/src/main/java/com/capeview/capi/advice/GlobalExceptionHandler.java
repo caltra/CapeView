@@ -24,4 +24,30 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(response);
     }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<CapiResponse<Void>> handleNullPointerException(NullPointerException ex) {
+
+        CapiResponse<Void> response = new CapiResponse<>(
+            null,
+            "Requested data does not exist.",
+            ex.getMessage(),
+            Instant.now());
+        
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(response);
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<CapiResponse<Void>> handleIllegalStateException(IllegalStateException ex) {
+
+        CapiResponse<Void> response = new CapiResponse<>(
+            null,
+            "Invalid state recieved.",
+            ex.getMessage(),
+            Instant.now());
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body(response);
+    }
 }

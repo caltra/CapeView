@@ -17,7 +17,7 @@ public class Player {
     @Column(name = "uuid")
     private String uuid;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     // Skin
